@@ -3,6 +3,7 @@ package ideandroid.sandrecardoso.acer.ideandroid;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Parcelable;
@@ -23,6 +24,8 @@ import android.support.v7.widget.ShareActionProvider;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.compat.*;
 import android.widget.VideoView;
+
+import java.io.File;
 import java.util.Objects;
 import android.widget.DatePicker;
 
@@ -61,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                     alert.show();
+                }else if(texto.getText().toString().equals("exit")){
+                    finish();
+                }else if (texto.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this,"tape your text",Toast.LENGTH_SHORT).show();
+                }else if (texto.getText().toString().equals("screen")){
+                    Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                    startActivity(intent);
+                }else if (texto.getText().toString().equals(";")){
+                    Toast.makeText(MainActivity.this,"ponto e vírgula",Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
