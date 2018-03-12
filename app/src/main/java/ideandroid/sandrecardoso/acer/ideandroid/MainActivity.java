@@ -2,6 +2,7 @@ package ideandroid.sandrecardoso.acer.ideandroid;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Parcelable;
@@ -46,8 +47,20 @@ public class MainActivity extends AppCompatActivity {
                 alert.setTitle("Aviso");
                 alert.setMessage("você deseja fechar!!!");
                 alert.setIcon(mipmap.ic_launcher_foreground);
-
-                alert.show();
+                alert.setCancelable(false);
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick( DialogInterface dialog, int which ) {
+                        finish();
+                    }
+                });
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick( DialogInterface dialog, int which ) {
+                        Toast.makeText(MainActivity.this,"Cancelado",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                    alert.show();
                 }
 
             }
